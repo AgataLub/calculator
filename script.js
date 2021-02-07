@@ -93,26 +93,41 @@ function roundResult() {
 function writeResult() {
   console.log("writeResult" + result);
 
-  history.push(result);
+  let listElement = document.createElement("li");
+  let createListString = document.createTextNode(result.toString());
+  listElement.appendChild(createListString);
+  document.getElementById("results").appendChild(listElement);
+  document.querySelector("#results").scrollTo(0, 10000);
+  document.querySelector("#firstnumber").value = result.toString();
 
-  fillField();
+  //   history.push(result);
+  //   fillField();
 }
 
-function fillField(item, index) {
-  console.log("fillField");
+// function fillField(item, index) {
+//   console.log("fillField");
 
-  let results_list = document.querySelector("#results");
-  let nodes = history.map((lang) => {
-    let li = document.createElement("li");
-    li.textContent = lang;
-    return li;
-  });
+//   let results_list = document.querySelector("#results");
+//   let nodes = history.map((lang) => {
+//     let li = document.createElement("li");
+//     li.textContent = lang;
+//     return li;
+//   });
 
-  results_list.append(...nodes);
-}
+//   results_list.append(...nodes);
+// }
 
 function clearResults() {
   console.log("clearResult");
+
+  let deleteChildren = document.querySelector("#results");
+  deleteChildren.innerHTML = "";
+
+  let deleteInput1 = document.querySelector("#firstnumber");
+  deleteInput1.value = "";
+
+  let deleteInput2 = document.querySelector("#secondnumber");
+  deleteInput2.value = "";
 }
 
 // document.getElementById('textbox_id').value
